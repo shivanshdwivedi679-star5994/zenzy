@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zenzy Clothing Wear - POS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="brand-name">Zenzy Clothing Wear</div>
+        <ul class="nav-links">
+            <li><button onclick="switchPage('home-page')" class="nav-btn active" id="nav-home-page">Home</button></li>
+            <li><button onclick="switchPage('products-page')" class="nav-btn" id="nav-products-page">Products</button></li>
+            <li><button onclick="switchPage('order-page')" class="nav-btn" id="nav-order-page">Select Your Order</button></li>
+            <li><button onclick="switchPage('database-page')" class="nav-btn" id="nav-database-page">Database</button></li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+        
+        <!-- PAGE 1: HOME PAGE -->
+        <section id="home-page" class="page active-page">
+            <div class="hero-section">
+                <h1>Welcome to Zenzy Clothing Wear</h1>
+                <p>Your premium destination for modern apparel.</p>
+                <button class="cta-btn" onclick="switchPage('order-page')">Start New Billing</button>
+            </div>
+        </section>
+
+        <!-- PAGE 2: PRODUCTS PAGE -->
+        <section id="products-page" class="page">
+            <h2>Complete Product Catalog</h2>
+            <div class="product-grid" id="full-catalog-grid">
+                <!-- JS will populate all products here -->
+            </div>
+        </section>
+
+        <!-- PAGE 3: SELECT YOUR ORDER (BILLING) PAGE -->
+        <section id="order-page" class="page">
+            <div class="pos-layout">
+                <!-- Left: Select Clothes -->
+                <div class="selection-panel">
+                    <h2>Select Clothes</h2>
+                    <div class="product-grid" id="order-catalog-grid">
+                        <!-- JS will populate products for selection here -->
+                    </div>
+                </div>
+
+                <!-- Right: Customer Details & Cart -->
+                <div class="billing-panel">
+                    <h2>Customer Bill</h2>
+                    
+                    <div class="customer-details">
+                        <input type="text" id="customer-name" placeholder="Customer Name" required>
+                        <input type="tel" id="customer-phone" placeholder="Phone Number" required>
+                    </div>
+
+                    <div class="cart-container" id="cart-items">
+                        <div class="empty-cart">No clothes added to the order.</div>
+                    </div>
+
+                    <div class="financials">
+                        <div class="total-row">
+                            <span>Total Bill:</span>
+                            <span id="grand-total">₹0.00</span>
+                        </div>
+                        <button class="generate-bill-btn" onclick="generateBill()">Generate Bill</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 4: DATABASE PAGE -->
+        <section id="database-page" class="page">
+            <h2>Sales Database Overview</h2>
+            
+            <div class="dashboard-stats">
+                <div class="stat-box">
+                    <h3>Total Orders</h3>
+                    <p id="total-orders-count">0</p>
+                </div>
+                <div class="stat-box">
+                    <h3>Total Sales (₹)</h3>
+                    <p id="total-sales-amount">₹0.00</p>
+                </div>
+            </div>
+
+            <div class="database-table-container">
+                <table class="db-table">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer Name</th>
+                            <th>Phone</th>
+                            <th>Items Purchased</th>
+                            <th>Total Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody id="db-table-body">
+                        <!-- JS will populate past orders here -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+    <script src="app.js"></script>
+</body>
+</html>
